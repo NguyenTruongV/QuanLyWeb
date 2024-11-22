@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật thông tin nhân viên</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="update-container">
+        <h1>Cập nhật thông tin nhân viên</h1>
+        <form method="POST" action="/update/{{ employee.id }}">
+            <div class="input-group">
+                <input type="text" name="name" value="{{ employee.name }}" required>
+            </div>
+            <div class="input-group">
+                <input type="number" name="age" value="{{ employee.age }}" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="department" value="{{ employee.department }}" required>
+            </div>
+            <button type="submit" class="btn">Cập nhật</button>
+        </form>
+    </div>
+</body>
+</html>
+
+

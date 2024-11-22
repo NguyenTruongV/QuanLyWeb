@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhân viên</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="navbar">
+        <h1>Quản lý sinh viên</h1>
+        <p>Xin chào, {{ current_user.username }}! <a href="/logout" class="btn">Đăng xuất</a></p>
+    </div>
+
+    <div class="employee-container">
+        <h2>Danh sách sinh viên</h2>
+        <form action="/add" method="POST" class="employee-form">
+            <input type="text" name="name" placeholder="Tên sinh viên" required>
+            <input type="number" name="age" placeholder="Tuổi" required>
+            <input type="text" name="department" placeholder="Khoa" required>
+            <button type="submit" class="btn">Thêm</button>
+        </form>
+
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Tuổi</th>
+                    <th>Khoa</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.age }}</td>
+                    <td>{{ employee.department }}</td>
+                    <td>
+                        <a href="/update/{{ employee.id }}" class="btn btn-edit">Sửa</a> |
+                        <a href="/delete/{{ employee.id }}" class="btn btn-delete">Xóa</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
