@@ -87,7 +87,7 @@ def add_employee():
         new_employee = Employee(name=name, age=int(age), department=department)
         db.session.add(new_employee)
         db.session.commit()
-        flash("Đã thêm nhân viên!", "success")
+        flash("Đã thêm sinh viên!", "success")
     return redirect(url_for('index'))
 
 
@@ -97,7 +97,7 @@ def delete_employee(id):
     employee = Employee.query.get_or_404(id)
     db.session.delete(employee)
     db.session.commit()
-    flash("Đã xóa nhân viên!", "success")
+    flash("Đã xóa sinh viên!", "success")
     return redirect(url_for('index'))
 
 
@@ -110,7 +110,7 @@ def update_employee(id):
         employee.age = int(request.form['age'])
         employee.department = request.form['department']
         db.session.commit()
-        flash("Đã cập nhật thông tin nhân viên!", "success")
+        flash("Đã cập nhật thông tin sinh viên!", "success")
         return redirect(url_for('index'))
     return render_template('update.html', employee=employee)
 
